@@ -148,7 +148,7 @@ function UpdateProduct({match}) {
         </div>
         <div className="form-group">
           <label className="text-muted">Category</label>
-          <select onChange={handleChange("category")} className="form-control">
+          <select onChange={handleChange("category")} className="form-control" selected={category}>
             <option>Please select</option>
             {categories &&
               categories.map((c, i) => {
@@ -186,7 +186,7 @@ function UpdateProduct({match}) {
   const redirectUser = () => {
     if(redirectToProfile){
         if(!error){
-            return <Redirect to='/'/>
+            return <Redirect to='/admin/products'/>
         }
     }
   }

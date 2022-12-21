@@ -75,7 +75,7 @@ function UserDashboard() {
         <h3 className="card-header">User Links</h3>
         <ul className="list-group">
           <li className="list-group-item">
-            <Link to="/user/cart">My cart</Link>
+            <Link to="/cart">My cart</Link>
           </li>
           <li className="list-group-item">
             <Link to={`/profile/${_id}`}>Profile update</Link>

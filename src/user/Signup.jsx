@@ -73,7 +73,7 @@ function Signup() {
   return (
     <Layout
       title="Signup"
-      description="Node React Signup"
+      description="create new account"
       className="container col-md-8 offset-md-2"
     >
         {showError()}

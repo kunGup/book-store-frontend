@@ -46,11 +46,11 @@ function Menu({history}) {
               to="/admin/dashboard"
               style={isActive(history, "/admin/dashboard")}
             >
-              Dashboard
+              Admin Dashboard
             </Link>
           </li>
         )}
-        {isAuthenticated() && isAuthenticated().user.role === 0 && (
+        {isAuthenticated() && (
           <li className="nav-item">
             <Link
               className="nav-link"

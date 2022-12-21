@@ -42,6 +42,7 @@ export const updateItem = (productId,count) => {
             cart = JSON.parse(localStorage.getItem("cart"));
         }
 
+        
         cart.map((product,i)=>{
             if(product._id===productId){
                 cart[i].count=count;

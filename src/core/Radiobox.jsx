@@ -7,16 +7,16 @@ function Radiobox({ prices, handleFilters }) {
     setValue(e.target.value)
   };
   return prices.map((p, i) => (
-    <div key={i}>
+    <li key={i} className="list-unstyled">
       <input
         type="radio"
-        className="mr-2 ml-4"
+        className="mr-2"
         name={p}
         onChange={handleChange}
         value={`${p._id}`}
       />
       <label className="form-check-label">{p.name}</label>
-    </div>
+    </li>
   ));
 }
 

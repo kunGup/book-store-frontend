@@ -4,8 +4,8 @@ import { Redirect } from "react-router-dom";
 import { signin,authenticate, isAuthenticated } from "../auth";
 function Signin() {
   const [values, setValues] = useState({
-    email: "john@gmail.com",
-    password: "password1",
+    email: "",
+    password: "",
     error: "",
     loading: false,
     redirectToReferrer: false
@@ -96,7 +96,7 @@ function Signin() {
   return (
     <Layout
       title="Signin"
-      description="Node React Signin"
+      description="Sign in to your account"
       className="container col-md-8 offset-md-2"
     >
       {showError()}

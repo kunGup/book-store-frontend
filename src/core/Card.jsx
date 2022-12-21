@@ -19,7 +19,7 @@ function Card({
     return (
       showViewProductButton && (
         <Link to={`/product/${product._id}`}>
-          <button className="btn btn-outline-primary mt-2 mb-2">
+          <button className="btn btn-outline-primary mr-2 mt-2 mb-2">
             View Product
           </button>
         </Link>
@@ -104,7 +104,7 @@ function Card({
     <div className="card">
       <div className="card-header name">{product.name}</div>
       <div className="card-body">
-        {shouldRedirect(redirect)}
+        {shouldRedirect(redirect)}  
         <ShowImage url="product" item={product} />
         <p className="lead mt-2">{`${product.description.substring(
           0,

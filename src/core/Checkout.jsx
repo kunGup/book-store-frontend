@@ -10,7 +10,7 @@ import { isAuthenticated } from "../auth";
 import DropIn from 'braintree-web-drop-in-react'
 import { emptyCart } from "./cartHelpers";
 
-const Checkout = ({products}) => {
+const Checkout = ({products, setRun = f => f, run = undefined}) => {
     const [data,setData] = useState({
         success: false,
         loading: false,
@@ -102,6 +102,7 @@ const Checkout = ({products}) => {
                 createOrder(userId, token, createOrderData)
                   .then((res) => {
                     emptyCart(() => {
+                      setRun(!run); // run useEffect in parent Cart
                       console.log("cart is empty payment done");
                       setData({ loading: false, success: true });
                     });

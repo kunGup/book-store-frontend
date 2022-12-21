@@ -37,7 +37,7 @@ function Home() {
   return (
     <Layout
       title="Home"
-      description="Node React Home"
+      description="Book store home"
       className="container-fluid"
     >
       <Search />
