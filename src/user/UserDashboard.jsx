@@ -52,13 +52,12 @@ function UserDashboard() {
                       return (
                         <div key={i}>
                           <h6>Product name: {p.name}</h6>
-                          <h6>Product price: ${p.price}</h6>
+                          <h6>Product price: ₹ {p.price}</h6>
                           <h6>
-                            Purchased date: {" "}
-                            {moment(p.createdAt).fromNow()}
+                            Purchased date: {moment(p.createdAt).fromNow()}
                           </h6>
                         </div>
-                      )
+                      );
                     })}
                   </div>
                 )
