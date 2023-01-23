@@ -117,22 +117,38 @@ const Orders = () => {
                     </ul>
                     <h3 className="mt-4 mb-4 font-italic">
                       Total products in the order: {o.products.length}
-                    </h3>
-                    {o.products.map((p, pIndex) => (
-                      <div
-                        className="mb-4"
-                        key={pIndex}
-                        style={{
-                          padding: "20px",
-                          border: "1px solid indigo",
+                      {" "}
+                      <button
+                        className="btn btn-primary btn-sm"
+                        data-toggle="collapse"
+                        data-target={`#collapse-${o._id}`}
+                        onClick={(e)=>{
+                          if (e.target.classList.contains("collapsed"))
+                            e.target.textContent = "hide"
+                          else
+                            e.target.textContent = "show";
                         }}
                       >
-                        {showInput("Product name", p.name)}
-                        {showInput("Product price", p.price)}
-                        {showInput("Product total", p.count)}
-                        {showInput("Product Id", p._id)}
-                      </div>
-                    ))}
+                        show
+                      </button>
+                    </h3>
+                    <div className="collapse" id={`collapse-${o._id}`}>
+                      {o.products.map((p, pIndex) => (
+                        <div
+                          className="mb-4"
+                          key={pIndex}
+                          style={{
+                            padding: "20px",
+                            border: "1px solid indigo",
+                          }}
+                        >
+                          {showInput("Product name", p.name)}
+                          {showInput("Product price", p.price)}
+                          {showInput("Product total", p.count)}
+                          {showInput("Product Id", p._id)}
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 );
             })}
