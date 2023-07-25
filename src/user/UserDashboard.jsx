@@ -86,8 +86,8 @@ function UserDashboard() {
   return (
     <Layout title="Dashboard" description={`G'Day ${name}`} className='container-fluid'>
       <div className="row">
-        <div className="col-3">{userLinks()}</div>
-        <div className="col-9">
+        <div className="col-sm-3">{userLinks()}</div>
+        <div className="col-sm-9">
             {userInfo()}
             {purchaseHistory()}
         </div>

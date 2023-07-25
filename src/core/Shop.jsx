@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import Checkbox from "./Checkbox";
 import Radiobox from "./Radiobox";
 import { prices } from "./fixedPrices";
+import Spinner from "./Spinner";
 
 function Shop() {
   const [myFilters, setMyFilters] = useState({
@@ -15,6 +16,7 @@ function Shop() {
   const [error,setError] = useState(false)
   const [categories,setCategories] = useState([])
   const [limit,setLimit] = useState(6)
+  const [loading,setLoading] = useState(false);
   const [skip,setSkip] = useState(0)
   const [size,setSize] = useState(0)
   const [filteredResults,setFilteredResults] = useState([])
@@ -30,6 +32,7 @@ function Shop() {
 
   const loadFilteredResults = (newFilters) => {
     // console.log(newFilters);
+    setLoading(true);
     getFilteredProducts(skip, limit, newFilters).then((data) => {
       if (data.error) {
         setError(data.error);
@@ -37,6 +40,7 @@ function Shop() {
         setFilteredResults(data.data);
         setSize(data.size);
         setSkip(0);
+        setLoading(false)
       }
     });
   };
@@ -106,12 +110,16 @@ function Shop() {
       <div className="row">
         <div className="col-4">
           <h4>Filter by categories</h4>
-          <ul>
-            <Checkbox
-              categories={categories}
-              handleFilters={(filters) => handleFilters(filters, "category")}
-            />
-          </ul>
+          {categories.length === 0 ? (
+            <Spinner />
+          ) : (
+            <ul>
+              <Checkbox
+                categories={categories}
+                handleFilters={(filters) => handleFilters(filters, "category")}
+              />
+            </ul>
+          )}
           <h4>Filter by price</h4>
           <ul>
             <Radiobox
@@ -122,15 +130,21 @@ function Shop() {
         </div>
         <div className="col-8">
           <h2 className="mb-4">Products</h2>
-          <div className="row">
-            {filteredResults.map((product, i) => (
-              <div key={i} className="col-4 mb-3">
-                <Card product={product} />
+          {loading ? (
+            <Spinner />
+          ) : (
+            <>
+              <div className="row">
+                {filteredResults.map((product, i) => (
+                  <div key={i} className="col-md-6 mb-3">
+                    <Card product={product} />
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
-          <hr />
-          {loadMoreButton()}
+              <hr />
+              {loadMoreButton()}
+            </>
+          )}
         </div>
       </div>
     </Layout>

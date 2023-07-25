@@ -5,6 +5,7 @@ import Layout from "../core/Layout";
 import { getProducts } from "./apiCore";
 import Card from "./Card";
 import Search from "./Search";
+import Spinner from "./Spinner";
 function Home() {
   const [productsBySell, setProductsBySell] = useState([]);
   const [productsByArrival, setProductsByArrival] = useState([]);
@@ -43,16 +44,20 @@ function Home() {
       <Search />
       <h2 className="mb-4">New Arrivals</h2>
       <div className="row">
-        {productsByArrival.map((product, i) => (
-          <div key={i} className="col-4 mb-3">
-            <Card product={product} />
-          </div>
-        ))}
+        {productsByArrival.length === 0 ? (
+          <Spinner />
+        ) : (
+          productsByArrival.map((product, i) => (
+            <div key={i} className="col-sm-6 col-lg-4 mb-3">
+              <Card product={product} />
+            </div>
+          ))
+        )}
       </div>
       <h2 className="mb-4">Best Sellers</h2>
       <div className="row">
-        {productsBySell.map((product, i) => (
-          <div key={i} className="col-4 mb-3">
+        {productsBySell.length === 0 ? <Spinner/> : productsBySell.map((product, i) => (
+          <div key={i} className="col-sm-6 col-lg-4 mb-3">
             <Card product={product} />
           </div>
         ))}
